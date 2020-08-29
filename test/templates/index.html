@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    /*background: url("bg.jpg");   这是修改的显示框图的class  块*/
+    body {
+      width: 100%;
+      height: 100%;
+      /*background-image: url("static/bg.jpg");*/
+	background-image: url("static/1.jpg");
+      /*background: url("bg.jpg");*/
+      background-size: cover;
+    }
+    
+    .text {
+      text-align: center;
+      padding-top: 20px;
+      font-size: 50px;
+      color: lightgoldenrodyellow;
+    }
+
+
+    /*定义的一个类型ID号  这是修改的显示框图的class  块*/
+    #time {
+      background: red;
+	  margin-top: 50px;
+      width: 150px;
+      margin-left: 20%;
+    }
+    /*定义的一个类型ID号  这是修改的显示框图的class  块*/
+    #time1 {
+      background: red;
+	  margin-top: 50px;
+      width: 150px;  /*宽度*/
+      margin-left: 20%;
+    }
+    /*定义的一个类型ID号  这是修改的显示框图的class  块*/
+    #time2 {
+      background: red;
+      width: 150px;
+      margin-left: 20%;
+    }
+    /*定义的一个类型ID号  这是修改的显示框图的class  块*/
+    #time3 {
+      background: red;
+      width: 150px;
+      margin-left: 20%;
+    }
+    /*background 显示的位置和显示的颜色   这是修改的显示框图的class  块*/
+    .sits {
+      filter: alpha(opacity=20);
+      opacity: 0.7;
+      margin-top: 50px;
+      width: 610px;
+      height: 600px;
+      margin-left: 40%;
+      background: darkseagreen;
+    }
+    
+    table {
+      height: auto;
+      width: 600px;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    
+    td {
+      padding-top: 23px;
+      text-align: center;
+    }
+    
+    h1 {
+      padding-top: 10px;
+      text-align: center;
+      size: 20px;
+    }
+    
+    /*修改显示的位置  这是修改的显示框图的class  块*/
+    img {
+      margin-left: 10px;
+    }
+    
+    span {
+      font-size: 20px;
+      color: red;
+    }
+  </style>
+  <script src="static/jquery-1.11.3.js"></script>
+  <!--<script src="jquery-1.11.3.js"></script>-->
+</head>
+
+<body>
+  <div class="text">
+    欢迎来到位大伟的系统test
+  </div>
+
+  <div id="time2">shuju2：
+  </div>
+  <div id="time3">shuju3：
+
+  </div>
+  <div class="sits">
+    <h1>设备状态示意图：</h1>
+    <table>
+      <tr>
+        <td><img id="sit1" src="static/2.jpg" width="170px" height="80px">
+          <br>
+          <span id="sitText1">设备1</span>
+        </td>
+        <td><img id="sit2" src="static/2.jpg" width="170px" height="80px">
+          <br>
+          <span id="sitText2">设备2</span>
+        </td>
+        <td><img id="sit3" src="static/2.jpg" width="170px" height="80px">
+          <br>
+          <span id="sitText3">设备3</span>
+        </td>
+      </tr>
+      <tr>
+        <td><img id="sit4" src="static/2.jpg" width="150px" height="80px">
+          <br>
+          <span id="sitText4">设备4</span>
+        </td>
+        <td><img id="sit5" src="static/2.jpg" width="150px" height="80px">
+          <br>
+          <span id="sitText5">设备5</span>
+        </td>
+        <td><img id="sit6" src="static/2.jpg" width="150px" height="80px">
+          <br>
+          <span id="sitText6">设备6</span>
+        </td>
+      </tr>
+      <tr>
+        <td><img id="sit7" src="static/2.jpg" width="150px" height="80px">
+          <br>
+          <span id="sitText7">设备7</span>
+        </td>
+        <td><img id="sit8" src="static/2.jpg" width="150px" height="80px">
+          <br>
+          <span id="sitText8">设备8</span>
+        </td>
+        <td><img id="sit9" src="static/2.jpg" width="150px" height="80px">
+          <br>
+          <span id="sitText9">设备9</span>
+        </td>
+      </tr>
+      <tr>
+        <td><img id="sit10" src="static/2.jpg" width="150px" height="80px">
+          <br>
+          <span id="sitText10">设备10</span>
+        </td>
+        <td><img id="sit11" src="static/2.jpg" width="150px" height="80px">
+          <br>
+          <span id="sitText11">设备11</span>
+        </td>
+        <td><img id="sit12" src="static/2.jpg" width="150px" height="80px">
+          <br>
+          <span id="sitText12">设备12</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <script type="text/javascript">
+    function test() {
+      $.get('/ceshi', function(data) {
+
+        //从python中读取数据；
+        data2 = JSON.parse(data);
+        console.log(data2[10]);      
+        console.log(data2[9]);
+        console.log(data2[8]);
+	  console.log(data2[6]);
+        document.getElementById("time2").innerHTML = "日期和温度:" + data2[10]+""+"PM2.5的数据:" + data2[9] + ""+""+"风向:" + data2[8] + ""+"实时温度数据"+data2[6]+"";
+        console.log(data2[7]);
+        document.getElementById("time3").innerHTML = "天气状况:" + data2[7] + "";
+        //利用for循环对座位进行遍历；
+        for (var i = 1; i <= data2.length; i++) {
+          var select = "#sit" + i;
+          var selectText = "sitText" + i;
+
+          //打印数据；
+          //console.log(selectText);
+
+          if (data2[i - 1] === "0") {
+            $(select).attr("src", "static/2.jpg");
+
+
+            document.getElementById(selectText).innerHTML = "设备" + i + "(关闭)";
+
+
+          } else if (data2[i - 1] === "1") {
+            $(select).attr("src", "static/1.jpg");
+            document.getElementById(selectText).innerHTML = "设备" + i + "(打开)";
+          }
+        }
+      });
+
+    }
+    test();
+    setInterval(test, 2000);
+  </script>
+</body>
+
+</html>
